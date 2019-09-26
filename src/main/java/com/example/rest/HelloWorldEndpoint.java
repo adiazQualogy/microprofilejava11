@@ -1,4 +1,4 @@
-package com.example.intento1.rest;
+package com.example.rest;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
