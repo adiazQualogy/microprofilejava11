@@ -13,20 +13,20 @@ import org.eclipse.microprofile.faulttolerance.Fallback;
 @Path("/hello")
 public class HelloWorldEndpoint {
 
-	@GET
-	@Produces("text/plain")
-	@Fallback(fallbackMethod = "getFallback")
-	public Response doGet(@QueryParam("fail") boolean fail) {
-		var message = "Hello from Thorntail! ";
-		if (fail) {
-			throw new RuntimeException(message);
-		} else {
-			var proofOfJava11 = "\nIs this running on a version below Java 11? " + message.isBlank();
-			return Response.ok(message + proofOfJava11).build();
-		}
-	}
+  @GET
+  @Produces("text/plain")
+  @Fallback(fallbackMethod = "getFallback")
+  public Response doGet(@QueryParam("fail") boolean fail) {
+    var message = "Hello from Thorntail! Add a parameter with name 'fail' and value 'true' to this endpoint to force a fallback";
+    if (fail) {
+      throw new RuntimeException(message);
+    } else {
+      var proofOfJava11 = "\nIs this running on a version below Java 11? " + message.isBlank();
+      return Response.ok(message + proofOfJava11).build();
+    }
+  }
 
-	public Response getFallback(@QueryParam("fail") boolean fail) {
-		return Response.ok("Fallback message executed because fail was forced: " + fail).build();
-	}
+  public Response getFallback(@QueryParam("fail") boolean fail) {
+    return Response.ok("Fallback message executed because fail was forced: " + fail).build();
+  }
 }
