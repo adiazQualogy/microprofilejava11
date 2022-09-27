@@ -14,3 +14,5 @@ http://localhost:8080/metrics
 
 How to check the counter metrics:
 http://localhost:8080/metrics/application
+
+And that's all, folks!
